@@ -34,3 +34,18 @@ WHERE CAST(g.lpep_pickup_datetime AS DATE) = '2019-10-18'
 GROUP BY zone
 HAVING SUM(g.total_amount) > 13000
 ORDER BY total DESC LIMIT 3` 
+
+`select 
+	z2."Zone" AS zone,
+	g.tip_amount
+FROM
+	green_taxi_data g 
+	JOIN
+	zones z 
+	ON g."PULocationID" = z."LocationID"
+	JOIN zones z2
+	ON g."DOLocationID" = z2."LocationID"
+WHERE 
+CAST(g.lpep_pickup_datetime AS DATE) BETWEEN '2019-10-01' AND '2019-10-31'
+AND z."Zone"='East Harlem North'
+ORDER BY 2 DESC` JFK
