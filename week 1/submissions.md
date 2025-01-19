@@ -22,3 +22,15 @@ AND trip_distance > 10`
 
 `SELECT CAST(lpep_pickup_datetime AS DATE) AS pickup_day, trip_distance FROM green_taxi_data
 ORDER BY trip_distance DESC LIMIT 1` 2019-10-31
+
+`select 
+	SUM(g.total_amount) AS total, z."Zone" AS zone 
+FROM
+	green_taxi_data g 
+	JOIN
+	zones z 
+	ON g."PULocationID" = z."LocationID"
+WHERE CAST(g.lpep_pickup_datetime AS DATE) = '2019-10-18'
+GROUP BY zone
+HAVING SUM(g.total_amount) > 13000
+ORDER BY total DESC LIMIT 3` 
