@@ -1,3 +1,5 @@
+To include 2021 we can use the existing schduled flow and utilise backfills in Kestra for green taxi and yellow taxi data
+
 ### Question 3
 ```
 SELECT COUNT(*) FROM `demo_dataset_enockenm.yellow_tripdata`
